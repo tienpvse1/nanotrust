@@ -7,6 +7,7 @@
     "build": "nx build",
     "test": "nx test",
     "console": "cd hasura && hasura console",
+    "build:all": "nx run-many --target=build --all",
     "migrate": "cd hasura && hasura migrate apply && hasura metadata apply",
     "compose-up:local": "sudo docker-compose -f docker-compose.local.yml up -d",
     "compose-down:local": "docker-compose -f docker-compose.local.yml down",

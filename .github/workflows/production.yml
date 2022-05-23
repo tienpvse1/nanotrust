@@ -2,11 +2,11 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 jobs:
   build:
-    runs-on: [self-hosted, development]
+    runs-on: [self-hosted, production]
 
     steps:
     - uses: actions/checkout@v3
@@ -14,13 +14,13 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Stop the server
       run: |
-        npm run compose-down:dev
+        npm run compose-down:prod
         docker image rm -f $(docker images -a | grep -v "postgres" | grep -v "redis" | grep -v "hasura/graphql-engine"  | awk 'NR>1 {print $1}')
     - name: build the whole app
       run: npm run build:all
     - name: start the server
       run: |
-        npm run compose-up:dev
+        npm run compose-up:prod
         echo "🍆🍆🍆 migrated successfully 🍆🍆🍆"
         echo "🍌🍌🍌 server started successfully 🍌🍌🍌"
       
