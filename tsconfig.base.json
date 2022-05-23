@@ -13,8 +13,17 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": ".",
-    "paths": {}
+    "strict": true,
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "paths": {
+      "@nanotrust/common": ["libs/common/src/index.ts"],
+      "@nanotrust/express": ["libs/express/src/index.ts"],
+      "@nanotrust/nest": ["libs/nest/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
